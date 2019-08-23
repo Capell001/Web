@@ -1,0 +1,10 @@
+*{padding:0; margin:0;}
+#wrapper{width:610px; background-color:#999; border:#999 solid 5px;}
+#wrapper p{text-align:center; font-size:18px; color:#000;}
+.block{width:120px; height:100px; margin:1px; display:inline-block; 
+  position:relative; background-color: white;}
+.block button{position:absolute; right:0; bottom:0; padding: 10px; cursor:pointer;}
+a#goHome { color: dodgerblue; background-color: black; padding: 15px; 
+  text-decoration: none; position: fixed; right: 0; bottom: 0; }
+a#goHome:hover { color: deeppink; }
+

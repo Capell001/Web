@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>Document</title>
+  
+  <style>
+      * { margin: 0; padding: 0; }
+      html,body { height: 100%; }
+      html { font-size: 20px; }
+      body { font-size: 15px; }
+      div { font-size: 0.7em; }
+      p { font-size: 2rem; }
+      /*  rem 預設相對到瀏覽器的預設(16px),只有html可以改變  */
+
+      #b1 { background-color: skyblue; width: 50%; height: 50%;
+        position: absolute; top: 50%; left: 50%; 
+        /*margin-left: -25%; margin-top: -25%;  ?????? */ 
+        transform: translate( -50%, -50% ); }
+    
+       #b2 { background-color: hotpink; width: 50%; height: 50%; 
+        margin-left: 15%; margin-top: 15%;  }
+
+
+  </style>
+
+</head>
+<body>
+   <div id="b1">
+        <div id="b2"></div>
+   </div>
+
+
+</body>
+</html>

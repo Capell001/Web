@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>test001_css</title>
+  <style>
+    /*註解:將header,main,footer,aside設定背景顏色和預設高度*/
+    body {
+      width: 90%;
+      max-width: auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top:0;
+      color: #000;
+    }
+    header {
+      background-color: aqua;
+      height: 150px;
+      position: relative;
+    }
+    #logo {
+      background-color: cornflowerblue;
+      position: absolute;
+      width: 50px;
+      height: 40px;
+      top: 50%;/*置中*/
+      transform:translateY(-50%) rotate(-15deg);
+    }
+    header nav {
+      background-color: darkgray;
+      color: #000;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 150px;
+      height: 30px;
+      
+    }
+    #main {
+      background-color: #8e003c;
+      height:300px;
+      overflow: hidden;
+    }
+    #main aside{
+      background-color: crimson;
+      min-height: 200px;
+      width: 20%;
+      float: left;
+    }
+    #main #content{
+      background-color: crimson;
+      min-height: 200px;
+      width: 56%;
+      float: left;
+      margin: 0 2%;
+      /*
+        margin-left: 2%;
+        margin-right: 2%;
+        margin: 四周統一;
+        margin: 上下 左右;
+        margin: 上 右 下 左;
+        margin: 上 右左 下;
+        */
+    }
+    footer {
+      background-color: chocolate;
+      height: 20px;
+      padding: 15px;
+      margin: 15px;
+      text-align: center;
+    }
+    /*設定aside邊界跟大小以及透過position:fixed固定住位置不會因為捲動而消失*/
+    body>aside {
+      background-color: cadetblue;
+      position: fixed;
+      width: 50px;
+      height: 200px;
+      right: 0;
+      top: 100px;
+      
+    }
+  </style>
+</head>
+<!--註解:body的背景改成灰色-->
+<body style="background-color: gray">
+  <header>
+    <div id="logo"></div>
+    <nav></nav>
+  </header>
+  <div id="main">
+     
+    <aside>zzzzzzzzzzzz.zzzzzzzzzzzzzzzzz</aside><!-- contant內三行指令為幫main的框內加一個框 -->
+    <div id="content"></div>
+    <aside>
+    zzzzzzzzzzzzz.zzzzzzzz</aside><!-- 英文單字斷行問題可以在style中的main宣告word-break:break-all; -->
+    
+  </div>
+  <footer>字體表示測試</footer>
+  <aside></aside>
+</body>
+</html>

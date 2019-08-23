@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <!-- meta:vp[TAB] -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 外部資源 -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Noto+Sans+TC|Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/w3.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+
+    <!--  plugin start  -->
+    <!--  plugin end  -->
+
+    <!-- 以下自行設計的 -->
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <style>
+      .container { max-width: 1200px; margin: 0 auto; position: relative; }
+
+      header { background-color: #333; }
+      header .container { height: 80px; }
+      header .logo { position: absolute; left: 0; bottom: 0; width: 22%; max-width: 275px; height: auto; }
+      @media( max-width: 991px){ header .logo { width: 30%; } }
+      @media( max-width: 600px){ header .logo { width: 45%; } }
+
+      header nav { text-align: center; padding-top: 30px; }
+      header nav .w3-button { color: #fff; padding: 8px 12px;
+        font-family: 'Righteous', 'Noto Sans TC', sans-serif; font-size: 16px; }
+      header nav .w3-button:hover { background-color: darkred !important; color: #fff !important; }
+
+      #showMenu { border-radius: 50%; }
+    </style>
+
+
+    <script>
+      function w3_open() {
+        document.getElementById("mySidebar").style.display = "block";
+      }
+
+      function w3_close() {
+        document.getElementById("mySidebar").style.display = "none";
+      }
+
+      $(document).ready(function(){
+        //當手機版時，調整header的高度
+        function setHeaderHeight(){
+          if( $('#showMenu').is(':visible') ){
+            var targetHeight = $('header .logo').innerHeight();
+            $('header .container').css('height',targetHeight);
+            var targetmt = ($('header .container').innerHeight()-$('#showMenu').outerHeight())/2;
+            $('#showMenu').css('margin-top',targetmt);
+          }
+        }
+        setHeaderHeight();
+        $(window).resize(function(){
+          setHeaderHeight();
+        });
+      });
+    </script>
+  </head>
+  <body>
+
+    <header>
+
+      <!-- Sidebar -->
+      <div class="w3-sidebar w3-bar-block w3-border-right w3-animate-right w3-center" style="display:none;right:0" id="mySidebar">
+        <button onclick="w3_close()" class="w3-bar-item w3-large w3-left-align"> &times; Close</button>
+        <a href="#" class="w3-bar-item w3-button">發燒車訊</a>
+        <a href="#" class="w3-bar-item w3-button">影片介紹</a>
+        <a href="#" class="w3-bar-item w3-button">全球賽事</a>
+        <a href="#" class="w3-bar-item w3-button">新車展場</a>
+        <a href="#" class="w3-bar-item w3-button">留言聯絡</a>
+        <a href="#" class="w3-bar-item w3-button">品牌資訊</a>
+      </div>
+
+      <div class="container">
+        <a href="#"><img class="logo" src="images/logo.png" alt=""></a>
+        <nav class="w3-bar w3-hide-medium w3-hide-small">
+          <a href="#" class="w3-button">發燒車訊</a>
+          <a href="#" class="w3-button">影片介紹</a>
+          <a href="#" class="w3-button">全球賽事</a>
+          <a href="#" class="w3-button">新車展場</a>
+          <a href="#" class="w3-button">留言聯絡</a>
+          <a href="#" class="w3-button">品牌資訊</a>
+        </nav>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-dark-grey w3-large" id="showMenu" onclick="w3_open()"><i class="fa fa-bars" aria-hidden="true"></i></a>
+      </div>
+
+      <!-- mobile nav 
+<nav id="demo" class="w3-bar-block w3-red w3-hide w3-hide-large">
+<a href="#" class="w3-bar-item w3-button">Link 1</a>
+<a href="#" class="w3-bar-item w3-button">Link 2</a>
+<a href="#" class="w3-bar-item w3-button">Link 3</a>
+</nav>
+-->
+
+    </header>
+
+    <div id="main"></div>
+
+    <footer></footer>
+
+  </body>
+</html>

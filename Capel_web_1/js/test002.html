@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      button{ margin:5px; padding:5px; font-size:16px; }
+      li { font-size:18px; padding:5px; }
+      .sp{ background-color:#FFF06D; color:#B76C00;
+        font-size:36px; font-style:italic; font-weight:bold; }
+      ul h1 { font-size: 1.5rem; display: inline-block; margin: 0; }
+      img { vertical-align: middle; }
+    </style>
+  </head>
+  <body>
+    <h1>jQuery控制物件：(1)內容(2)樣式(3)動畫行為</h1>
+
+    <button>1. 以 text 方法取得 list-1 原有內容,再寫入新的內容"TSuiling"</button>
+    <button>2. 以 html 方法取得 list-2 原有內容,再寫入新的內容"TSuiling"</button>
+    <button>3. 重複新增 list-2 的內容</button><br>
+    <button>4. 項目清單中隔列換色</button>
+    <button>5. 清單第五列增加類別名稱sp,改變第五列的樣式</button>
+    <button>6. 清單第五列移除類別名稱sp</button><br>
+    <button>7. 滑鼠點選"隱藏"或"顯示"第二列(練習三個基本動畫效果)</button>
+    <hr>
+
+    <ul>
+      <li><strong><em>清單項目111</em></strong></li>
+      <li><strong><em>清單項目222</em></strong></li>
+      <li>清單項目333</li>
+      <li>清單項目444</li>
+      <li>清單項目555</li>
+      <li>清單項目666</li>
+      <li>清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777清單項目777</li>
+    </ul>
+
+
+    <script src="jquery-3.4.1.min.js"></script>
+
+    <script>
+      $('button:eq(0)').click(function(){
+        var result = $('li:eq(0)').text();
+        alert(result);
+        result = '<h1>TSuiling</h1>';
+        $('li:eq(0)').text(result);
+      });
+      
+      $('button:eq(1)').click(function(){
+        var result = $('li:eq(1)').html();
+        alert(result);
+        result = '<h1>TSuiling <img src="../images/icon2.png" alt=""></h1>';
+        $('li:eq(1)').html(result);
+      });
+      
+      $('button:eq(2)').click(function(){
+        var result = $('li:eq(1)').html();
+        //alert(result);
+        $('li:eq(1)').append(result);
+      });
+      
+      $('button:eq(3)').click(function(){
+        $('li:odd').css('background-color','#de3c3c').css('color','#000');
+        $('li:even').css('background-color','#9d8282').css('color','#4b28bf');
+      });
+      
+      $('button:eq(4)').click(function(){
+        $('li:eq(4)').addClass('sp');
+      });
+      
+      $('button:eq(5)').click(function(){
+        $('li:eq(4)').removeClass('sp');
+      });
+      $('button:eq(6)').click(function(){
+        //$('li:eq(1)').toggle();  //show(), hide()
+        //$('li:eq(1)').fadeToggle(1000);  //fadeIn(), fadeOut()
+        $('li:eq(1)').slideToggle(1000);  //slideDown(), slideUp()
+      });
+      
+    </script>
+
+  </body>
+</html>

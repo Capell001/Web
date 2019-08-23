@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>Document</title>
+  
+  <style>
+      * { margin: 0; padding: 0; }
+      header { background-color: #8880e2; overflow: hidden; }
+      #logo { background-color: #5d99ea; font-size: 2em; padding: 10px;float: left;}
+      nav { background-color: aqua;float: right; }
+      nav a { background-color: rgba(255, 255, 255, 0.7); padding: 10px;display: inline-block; }
+    
+    @media( max-width:600px ){
+        button { display: block; padding: 10px; position: absolute; left: 10px; top: 10px; cursor: pointer; }
+      
+        header { overflow: visible; }
+        #logo { float: none; text-align: center; background-color: transparent; }
+        nav { float: left;width: 20%;display: none;}
+        nav a { display: block; text-align: center;}
+    }
+
+    </style>
+
+
+</head>
+
+<body>
+  <header>
+     
+      <button>MENU</button>
+      
+      <div id="logo">LOGO</div>
+      
+      <nav>
+        <a href="#">BUTTON1</a>
+        <a href="#">BUTTON2</a>
+        <a href="#">BUTTON3</a>
+        <a href="#">BUTTON4</a>
+      </nav>
+  </header>
+  
+  <script>
+    var IO = false;  //代表menu是否開啟的記錄, true=>開啟
+      document.getElementsByTagName('button').item(0).onclick = function(){
+        if(IO){
+          document.getElementsByTagName('nav')[0].style.display = 'none';
+        }else{
+          document.getElementsByTagName('nav')[0].style.display = 'block';
+        }
+        IO = !IO;
+        console.log(IO);
+      }
+
+    
+    
+  </script>
+
+
+</body>
+</html>

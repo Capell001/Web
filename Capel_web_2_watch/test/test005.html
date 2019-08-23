@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      div { background-color: skyblue; width: 500px; height: 300px; 
+        display: flex; justify-content: space-between; align-items: center; }
+
+      a { background-color: royalblue; color: white; width: 150px; height: 100px; text-align: center; }
+
+      .show { box-shadow: 0 0 10px red, 0 0 10px red; }
+      .show2 { box-shadow: 0 0 10px yellow, 0 0 10px yellow; }
+    </style>
+  </head>
+  <body>
+
+    <div id="b1">
+      <a href="#">AA</a>
+      <a href="#">BB</a>
+    </div>
+    
+    <div id="b2">
+      <a href="#">AA</a>
+      <a href="#">BB</a>
+    </div>
+
+
+    <script src="../js/jquery-3.4.1.min.js"></script>
+     <script>
+      /*
+      //使用hover控制滑鼠滑入的反應效果
+      $('#b1,#b1 a').hover(
+        function(e){ 
+          e.stopPropagation();
+          $(this).addClass('show'); 
+        },function(){ 
+          $(this).removeClass('show'); 
+        }
+      );
+      */
+      
+      //使用click控制按鈕觸發效果的開關
+      $('#b1,#b1 a').click(
+        function(e){
+          if( $(this).hasClass('show2') ){
+            e.stopPropagation();
+            $(this).removeClass('show2');
+          }else{
+            e.stopPropagation();            
+            $(this).addClass('show2');
+          }
+        }
+      );
+      
+      
+      // "mouseover/mouseout" vs "mouseenter/mouseleave"
+      $('a').mouseover(function(e){  e.stopPropagation();  $(this).addClass('show2');  });
+      $('a').mouseout(function(e){  e.stopPropagation();  $(this).removeClass('show2');  });
+
+      $('#b1').mouseover(function(){  $(this).addClass('show');  });
+      $('#b1').mouseout(function(){  $(this).removeClass('show');  });
+      
+      $('#b2').mouseenter(function(){  $(this).addClass('show');  });
+      $('#b2').mouseleave(function(){  $(this).removeClass('show');  });
+      
+      
+    </script>
+
+  </body>
+</html>

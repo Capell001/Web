@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    *{margin: 0;padding: 0;box-sizing:border-box;}
+     ul,ol,li { list-style: none; }
+     a { text-decoration: none; }
+    
+    html, body { height: 100%; }
+    #nav { background-color: lightgrey; min-height: 100%; width: 200px; padding: 15px 0px; }
+    
+    ul#nav > li >h2{ background-color: gray; margin: 5px 0; text-align: center; cursor: pointer; }
+    ul#nav ul { display: none; }
+    ul#nav ul li {  }
+    ul#nav>li>ul a { display: block; padding: 3px 20px; background-color: rgba(230, 132, 253, 0.3); }
+    ul#nav>li>ul a:hover{background-color: aqua;}
+
+
+  </style>
+</head>
+
+<body>
+  <ul id="nav">
+    <li><h2>AAAAA</h2>
+      <ul>
+        <li><a href="#">00001</a></li>
+        <li><a href="#">00002</a></li>
+        <li><a href="#">00003</a></li>
+        <li><a href="#">00004</a></li>
+        <li><a href="#">00005</a></li>
+        <li><a href="#">00006</a></li>
+        <li><a href="#">00007</a></li>
+        <li><a href="#">00008</a></li>
+      </ul>
+    </li>
+    <li><h2>AAAAA</h2>
+      <ul>
+        <li><a href="#">00001</a></li>
+        <li><a href="#">00002</a></li>
+        <li><a href="#">00003</a></li>
+        <li><a href="#">00004</a></li>
+        <li><a href="#">00005</a></li>
+        <li><a href="#">00006</a></li>
+        <li><a href="#">00007</a></li>
+        <li><a href="#">00008</a></li>
+      </ul>
+    </li>
+    <li><h2>AAAAA</h2>
+      <ul>
+        <li><a href="#">00001</a></li>
+        <li><a href="#">00002</a></li>
+        <li><a href="#">00003</a></li>
+        <li><a href="#">00004</a></li>
+        <li><a href="#">00005</a></li>
+        <li><a href="#">00006</a></li>
+        <li><a href="#">00007</a></li>
+        <li><a href="#">00008</a></li>
+      </ul>
+    </li>
+  </ul>
+  
+  
+  <script src="jquery-3.4.1.min.js"></script>
+  <script>
+    $(function(){
+      $('#nav>li').click(function(){
+        $('#nav ul').slideUp();
+        //判斷我的兒子是否為收合，如果"是"=>展開
+        if($(this).children('ul').is(':hidden')){
+          $(this).children('ul').slideDown();
+        }
+        
+      });
+      
+    });
+  
+  </script>  
+</body>
+</html>

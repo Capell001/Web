@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    header {background-color: bisque;height: 150px;position: relative;}
+    #main  {background-color: aqua;min-height: 300px;}
+    footer {background-color: aquamarine; height: 50px;}
+    #currentTimeArea { background-color: #10436f; color: #fff; padding: 10px;
+        position: absolute; right: 0; bottom: 0; }
+
+  </style>
+</head>
+
+<body>
+  <header>
+     <div id="currentTimeArea">目前時間：XXXXXX</div>
+  </header>
+  <div id="main"></div>
+  <footer></footer>
+  
+   <script>
+      //alert('Hello~~~~~~~2');
+      //document.getElementById('currentTimeArea').innerHTML = '123456';
+      
+      function runTime (){
+        var now = new Date();
+        
+        var nowY = now.getFullYear();
+        var nowM = now.getMonth()+1;
+        //console.log(nowM);
+        var nowD = now.getDate();
+        var nowW = now.getDay();
+        //console.log(nowW);
+        var nowH = now.getHours();
+        var nowI = now.getMinutes();
+        var nowS = now.getSeconds();
+        
+        //加以處理
+        //var weekAy = ['日','一','二','三','四','五','六'];
+        var weekAy = Array('日','一','二','三','四','五','六');
+        nowW = weekAy[nowW];
+        
+        if (nowH<10){
+          nowH = '0' + nowH;
+        }
+        
+        if (nowI<10){
+          nowI = '0' + nowI;
+        }
+        
+        if (nowS<10){
+          nowS = '0' + nowS; 
+        }
+        
+        
+        var nowStr = nowY+'年'+nowM+'月'+nowD+'日星期'+nowW+' '+nowH+':'+nowI+':'+nowS;
+        
+        document.getElementById('currentTimeArea').innerHTML = nowStr;
+      }
+      runTime();  //馬上執行一次
+      setInterval(runTime, 1000);  //每隔1000毫秒後執行一次runTime函式
+      
+      
+    </script>
+
+</body>
+</html>
