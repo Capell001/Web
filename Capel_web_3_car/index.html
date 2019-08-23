@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/w3.css">
     <script src="js/jquery-3.4.1.min.js"></script>
+    <<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <!-- meta:vp[TAB] -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 外部資源 -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Noto+Sans+TC|Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/w3.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
 
     <!--  plugin start  -->
@@ -21,47 +34,65 @@
     <link rel="stylesheet" href="css/index.css">
 
     <style>
+      /* reset & document all default ================================================ */
       body { background-color: #333; color: #fff; }
       .container { max-width: 1200px; margin: 0 auto; position: relative; }
 
+      /* header area & 相關選單按鈕 ==================================================== */
       header { background-color: #333; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6); }
       header .container { height: 80px; }
       header .logo { position: absolute; left: 0; bottom: 0; width: 22%; max-width: 275px; height: auto; }
       @media( max-width: 991px){ header .logo { width: 30%; } }
       @media( max-width: 600px){ header .logo { width: 45%; } }
 
+      /* nav area */
       header nav { text-align: center; padding-top: 30px; }
       header nav .w3-button { color: #fff; padding: 8px 12px;
         font-family: 'Righteous', 'Noto Sans TC', sans-serif; font-size: 16px; }
       header nav .w3-button:hover { background-color: darkred !important; color: #fff !important; }
 
       #showMenu { border-radius: 50%; }
-      
+
+      /* share btn area */
+      .shareBtnArea { position: absolute; right: 0; top: 38px; }
+      .shareBtnArea a { width: 28px; height: 28px; display: inline-block;
+        background-image: url(images/shareBtnfooter.png); margin-left: 2px; }
+
+      .shareBtnArea a:nth-of-type(1) { background-position: 0 0; }
+      .shareBtnArea a:nth-of-type(2) { background-position: -28px 0; }
+      .shareBtnArea a:nth-of-type(3) { background-position: -56px 0; }
+      .shareBtnArea a:nth-of-type(4) { background-position: -84px 0; }
+      .shareBtnArea a:nth-of-type(5) { background-position: -112px 0; }
+
+      .shareBtnArea a:nth-of-type(1):hover { background-position: 0 -28px; }
+      .shareBtnArea a:nth-of-type(2):hover { background-position: -28px -28px; }
+      .shareBtnArea a:nth-of-type(3):hover { background-position: -56px -28px; }
+      .shareBtnArea a:nth-of-type(4):hover { background-position: -84px -28px; }
+      .shareBtnArea a:nth-of-type(5):hover { background-position: -112px -28px; }
+
+      /* #main area ================================================================== */
       #main { background-image: url(images/dark42.png); min-height: 300px; }
-      
+
       footer { background-color: #333; color: #e3e3e3; padding: 1em; box-shadow: 0 -3px 3px #000; }
-
-
     </style>
 
 
     <script>
-      function w3_open() {
-        document.getElementById("mySidebar").style.display = "block";
-      }
-
-      function w3_close() {
-        document.getElementById("mySidebar").style.display = "none";
-      }
+      function w3_open() {  document.getElementById("mySidebar").style.display = "block";  }
+      function w3_close() {  document.getElementById("mySidebar").style.display = "none";  }
 
       $(document).ready(function(){
-        //當手機版時，調整header的高度
+        //當手機版時，調整header的高度及shareBtnArea的位置
         function setHeaderHeight(){
           if( $('#showMenu').is(':visible') ){
             var targetHeight = $('header .logo').innerHeight();
             $('header .container').css('height',targetHeight);
             var targetmt = ($('header .container').innerHeight()-$('#showMenu').outerHeight())/2;
             $('#showMenu').css('margin-top',targetmt);
+            var targetRight = $('#showMenu').innerWidth()+10;
+            var targetTop = ($('header .container').innerHeight()-$('.shareBtnArea').outerHeight())/2;
+            $('.shareBtnArea').css('right',targetRight).css('top',targetTop);
+            $('.shareBtnArea a').css('margin',0);
           }
         }
         setHeaderHeight();
@@ -73,9 +104,10 @@
   </head>
   <body>
 
-    <header>
+    <!-- header 區域 ================================================================ -->
+    <header class="w3-top">
 
-      <!-- Sidebar -->
+      <!-- Sidebar 區域 ================================================================ -->
       <div class="w3-sidebar w3-bar-block w3-border-right w3-animate-right w3-center" style="display:none;right:0" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-large w3-left-align"> &times; Close</button>
         <a href="#" class="w3-bar-item w3-button">發燒車訊</a>
@@ -86,8 +118,11 @@
         <a href="#" class="w3-bar-item w3-button">品牌資訊</a>
       </div>
 
+      <!-- Desktop Navigation Bars ======================================================= -->
       <div class="container">
+        <!-- logo -->
         <a href="#"><img class="logo" src="images/logo.png" alt=""></a>
+        <!-- Desktop Btn Area -->
         <nav class="w3-bar w3-hide-medium w3-hide-small">
           <a href="#" class="w3-button">發燒車訊</a>
           <a href="#" class="w3-button">影片介紹</a>
@@ -96,10 +131,21 @@
           <a href="#" class="w3-button">留言聯絡</a>
           <a href="#" class="w3-button">品牌資訊</a>
         </nav>
+
+        <!-- share Btn Area  -->
+        <div class="shareBtnArea w3-bar-item">
+          <a href="#" class="w3-bar-item"></a>
+          <a href="#" class="w3-bar-item"></a>
+          <a href="#" class="w3-bar-item"></a>
+          <a href="#" class="w3-bar-item"></a>
+          <a href="#" class="w3-bar-item"></a>
+        </div>
+
+        <!-- #showMenu Btn -->
         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-dark-grey w3-large" id="showMenu" onclick="w3_open()"><i class="fa fa-bars" aria-hidden="true"></i></a>
       </div>
 
-      <!-- mobile nav 
+      <!-- mobile Navigation Bars =======================================================
 <nav id="demo" class="w3-bar-block w3-red w3-hide w3-hide-large">
 <a href="#" class="w3-bar-item w3-button">Link 1</a>
 <a href="#" class="w3-bar-item w3-button">Link 2</a>
@@ -109,10 +155,14 @@
 
     </header>
 
+    <!-- #main 中央內容區域 =============================================================== -->
     <div id="main"></div>
 
-    <footer class="w3-center w3-small">Copyright © 2015 TS AUTOS | 建議使用 IE10 以上 或 Chrome 瀏覽器 | Maintain by tsuiling1020@gmail.com <br>
-(網站設計模擬練習用,相關影像資訊來自網路各網站,如 KA 或 UDN ,如有侵權請告知,即刻刪除處理)</footer>
+    <!-- footer 區域 ================================================================ -->
+    <footer class="w3-center w3-small">
+      Copyright © 2015 TS AUTOS | 建議使用 IE10 以上 或 Chrome 瀏覽器 | Maintain by tsuiling1020@gmail.com <br>
+      (網站設計模擬練習用,相關影像資訊來自網路各網站,如 KA 或 UDN ,如有侵權請告知,即刻刪除處理)
+    </footer>
 
   </body>
 </html>
