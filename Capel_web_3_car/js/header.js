@@ -9,7 +9,10 @@ $(document).ready(function(){
       $('header .container').css('height',targetHeight);
       var targetmt = ($('header .container').innerHeight()-$('#showMenu').outerHeight())/2;
       $('#showMenu').css('margin-top', targetmt);
-
+      var targetRight = $('#showMenu').innerWidth()+10;
+      var targetTop = ($('header .container').innerHeight()-$('.shareBtnArea').innerHeight())/2;
+      $('.shareBtnArea').css('right',targetRight).css('top',targetTop);
+      $('.shareBtnArea a').css('margin',0);
     }
   }
   setHeaderHeight();
