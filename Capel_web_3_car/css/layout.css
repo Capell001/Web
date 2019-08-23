@@ -6,6 +6,7 @@
 * font-family: 'Righteous', 'Noto Sans TC', sans-serif;  英文方圓體=>中文黑體=>電腦系統預設無襯線字體
 */
 /* reset & document all default ================================================ */
+*{padding: 0;margin: 0;}
 body { background-color: #333; color: #fff; }
 .container { max-width: 1200px; margin: 0 auto; position: relative; }
 
@@ -42,6 +43,6 @@ header nav .w3-button:hover { background-color: darkred !important; color: #fff 
 .shareBtnArea a:nth-of-type(5):hover { background-position: -112px -28px; }
 
 /* #main area ================================================================== */
-#main { background-image: url(../images/dark42.png); min-height: 300px; }
+#main { background-image: url(../images/dark42.png); min-height: 300px; padding: 100px 0 40px 0; }
 
-footer { background-color: #333; color: #e3e3e3; padding: 1em; box-shadow: 0 -3px 3px #000; }
+footer { background-color: #333; color: #e3e3e3; padding: 1em; box-shadow: 0 -3p
