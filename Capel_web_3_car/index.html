@@ -21,9 +21,10 @@
     <link rel="stylesheet" href="css/index.css">
 
     <style>
+      body { background-color: #333; color: #fff; }
       .container { max-width: 1200px; margin: 0 auto; position: relative; }
 
-      header { background-color: #333; }
+      header { background-color: #333; box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6); }
       header .container { height: 80px; }
       header .logo { position: absolute; left: 0; bottom: 0; width: 22%; max-width: 275px; height: auto; }
       @media( max-width: 991px){ header .logo { width: 30%; } }
@@ -35,6 +36,12 @@
       header nav .w3-button:hover { background-color: darkred !important; color: #fff !important; }
 
       #showMenu { border-radius: 50%; }
+      
+      #main { background-image: url(images/dark42.png); min-height: 300px; }
+      
+      footer { background-color: #333; color: #e3e3e3; padding: 1em; box-shadow: 0 -3px 3px #000; }
+
+
     </style>
 
 
@@ -104,7 +111,8 @@
 
     <div id="main"></div>
 
-    <footer></footer>
+    <footer class="w3-center w3-small">Copyright © 2015 TS AUTOS | 建議使用 IE10 以上 或 Chrome 瀏覽器 | Maintain by tsuiling1020@gmail.com <br>
+(網站設計模擬練習用,相關影像資訊來自網路各網站,如 KA 或 UDN ,如有侵權請告知,即刻刪除處理)</footer>
 
   </body>
 </html>
