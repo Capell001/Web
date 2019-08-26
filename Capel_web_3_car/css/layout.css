@@ -9,8 +9,9 @@
 * { margin: 0; padding: 0; }
 body { background-color: #333; color: #fff; }
 h1,h2,h3,h4,h5,h6 { margin: 0; font-family: 'Righteous', 'Noto Sans TC', sans-serif; }
+ul,ol,li { list-style: none; }
 
-.container { max-width: 1200px; margin: 0 auto; position: relative; }
+.container { max-width: 1200px; margin: 0 auto; position: relative; overflow: hidden; }
 .t-p1rem { padding: 1rem; }
 
 /* header area & 相關選單按鈕 ==================================================== */
@@ -46,6 +47,6 @@ header nav .w3-button:hover { background-color: darkred !important; color: #fff 
 .shareBtnArea a:nth-of-type(5):hover { background-position: -112px -28px; }
 
 /* #main area ================================================================== */
-#main { background-image: url(../images/dark42.png); min-height: 300px; padding: 100px 0 40px 0; }
+#main { background-image: url(../images/dark42.png); min-height: 300px; padding: 100px 0 40px 0; overflow: hidden; }
 
 footer { background-color: #333; color: #e3e3e3; padding: 1em; box-shadow: 0 -3px 3px #000; }

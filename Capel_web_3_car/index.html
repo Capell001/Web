@@ -26,24 +26,33 @@
 
     <script>
       $(document).ready(function(){
+        //上方 Slider =====================================================
         $('.TS_slider').slick({
           autoplay: true,
           dots: true
         });
+        //下方 Carousel 效果的 Slider ======================================
         $('.news_slider').slick({
-          //autoplay: true,
+          autoplay: true,
           dots: false,
           vertical: true,
           slidesToShow: 3,
           slidesToScroll: 1
         });
+        //負責中央下方 Tabs 功能的設計========================================
+        //一開始找到每個.tabs對應到.current標籤的內容淡入顯示--------------------
+        $('.tabs').each(function(i,obj){
+          var no = $(this).children('ul').children('.current').index();
+          console.log(no);
+          $(this).children('div').children('div').eq(no).fadeIn();
+        });
       });
     </script>
 
-
-     <style>
+    <style>
       #main{padding-top: 75px;}
 
+      /* 上方.TS_slider ====================================================== */
       .TS_slider.slick-dotted.slick-slider { margin-bottom: 40px; }
       .TS_slider img { width: 100%; height: auto; }
       .TS_slider .slick-prev, .TS_slider .slick-next { z-index: 9; }
@@ -58,15 +67,64 @@
       .TS_slider .slick-dots li button:after { width: 100%; height: 10px; position: absolute; left: 0; content: ''; }
       .TS_slider .slick-dots li button:before { top: -10px; }
       .TS_slider .slick-dots li button:after { bottom: -10px; }
-      
+
+      /* 下方.news_slider ====================================================== */
+      .news_slider .slick-track div { position: relative; }
       .news_slider img { width: 100%; height: auto; }
       .news_slider span { position: absolute; left: 0; top: 0; text-align: center;
         background-image: url(images/numBG.png); width: 25px; height: 25px; }
-      .news_slider .slick-track div { position: relative; }
-      
+      .news_slider p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-bottom: 10px; }
+
+      .news_slider { padding: 30px 0; }
+      .news_slider .slick-prev:before, .news_slider .slick-next:before { content: ''; }
+      .news_slider .slick-prev, .news_slider .slick-next { 
+        background-image: url(images/index_arrow.png); width: 120px; height: 30px; }
+      .news_slider .slick-prev { top: 0; left: 50%; transform: translateX(-50%); background-position: 0 0; }
+      .news_slider .slick-next { bottom: 0; left: 50%; transform: translateX(-50%); top: auto; right: auto; background-position: -120px 0; }
+      .news_slider .slick-prev:hover { background-position: 0 -30px; }
+      .news_slider .slick-next:hover { background-position: -120px -30px; }
+
+      /* tabs ================================================================================ */
+      .tabs .note { float: right; font-size: 12px; color: #999; padding: 10px 10px 0 0; }
+      .tabs { margin-bottom: 30px; }
+
+      .tabs ul { display: flex; }
+      .tabs ul li { background-color: #ccc; padding: 6px 12px; margin: 5px 5px 0 0;
+        border-radius: 5px 5px 0 0; cursor: pointer;
+        font-family: 'Orbitron', 'cwTeXHei', sans-serif; font-size: 16px; }
+
+      .tabs ul li.current { background-color: #ededed; padding: 8px 12px; margin: 0 5px 0 0; 
+        border: 1px solid #000; border-bottom: none; bottom: -1px; z-index: 1; position: relative; }
+
+      .tabs>div { min-height: 180px; background-color: #ededed; position: relative; border: 1px solid #000; overflow: hidden; }
+      .tabs:nth-of-type(n+2)>div { min-height: 250px; }
+      .tabs>div>div { position: absolute; left: 0; top: 0; padding: 20px; display: none; }
+      .tabs>div>div>figure { float: left; width: 23%; margin: 0%; border: 5px solid #fff; }
+      .tabs>div>div>figure img { width: 100%; height: auto; }
+      .tabs>div>div>figure figcaption { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+
+      .tabs:nth-of-type(n+2) img { width: 250px; height: auto; float: left; } 
+      .tabs:nth-of-type(n+2) .date, 
+      .tabs:nth-of-type(n+2) h4, 
+      .tabs:nth-of-type(n+2) p { margin: 0 0 10px 270px; }
+
+      .tabs:nth-of-type(n+2) .date { color: #666; font-size: 12px; }
+      .tabs:nth-of-type(n+2) a { color: red; font-size: 18px; }
+      .tabs:nth-of-type(n+2) p { text-align: justify; }
+
+
+
+      @media(max-width:1100px){ .tabs:nth-of-type(n+2)>div { min-height: 320px; } }
+      @media(max-width:900px){ 
+        .tabs:nth-of-type(n+2)>div { min-height: 460px; } 
+        .tabs:nth-of-type(n+2) img { float: none; max-width: 100%; } 
+        .tabs:nth-of-type(n+2) .date, .tabs:nth-of-type(n+2) h4, 
+        .tabs:nth-of-type(n+2) p { margin-left: 0px; }
+      }
+
+      @media(max-width:600px){ .tabs>div { min-height: 400px; } }
     </style>
-
-
 
   </head>
   <body>
@@ -88,11 +146,89 @@
       <!--  slick plugin end   -->
 
       <div class="container">
-        <div class="w3-twothird t-p1rem">
-          <div class="t-p1rem w3-white w3-round">twothird</div>
+        <div class="w3-threequarter t-p1rem">
+          <div class="t-p1rem w3-white w3-round">
+            <!-- 第一個tabs區域 start -->
+            <div id="tabs1" class="tabs">
+              <a class="note" href="https://autos.udn.com/autos/index" target="_blank">資料來源：UDN發燒車訊</a>
+              <ul>
+                <li class="current">最新車聞</li>
+                <li>試駕精選</li>
+                <li>國際車訊</li>
+                <li>中古車訊</li>
+              </ul>
+              <div>
+                <div class="w3-row">
+                  <figure class="w3-col s6 m3 w3-center">
+                    <a href="https://autos.udn.com/autos/story/8324/2286150" target="_blank"><img src="images/index/tabs/1-1.jpg" alt=""></a><figcaption>新動力單元迎戰F1賽季 HONDA</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center">
+                    <a href="https://autos.udn.com/autos/story/7825/2356443" target="_blank"><img src="images/index/tabs/1-2.jpg" alt=""></a><figcaption>Skoda Superb新增超級動力</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center">
+                    <a href="https://autos.udn.com/autos/story/7825/2364150" target="_blank"><img src="images/index/tabs/1-3.jpg" alt=""></a><figcaption>動感跑旅將襲台 BMW5系列Touring預售開跑</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center">
+                    <a href="https://autos.udn.com/autos/story/7825/2363239" target="_blank"><img src="images/index/tabs/1-4.jpg" alt=""></a><figcaption>限量神祕車款現身！</figcaption></figure>
+                </div>
+                <div class="w3-row">
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7828/2352381" target="_blank"><img src="images/index/tabs/2-1.jpg" alt=""></a><figcaption>安靜舒適動力足 SUPER ELANTRA 2.0菁英版試駕</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7828/2353895" target="_blank"><img src="images/index/tabs/2-2.jpg" alt=""></a><figcaption>脫胎換骨自成一格 Grand Lancer上市前試駕</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7828/2344195" target="_blank"><img src="images/index/tabs/2-3.jpg" alt=""></a><figcaption>G世代「5」力全開 BMW 530i Luxury Line試駕</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7821/2363638" target="_blank"><img src="images/index/tabs/2-4.jpg" alt=""></a><figcaption>Superb SportLine試駕 馬力增更動感</figcaption></figure>
+                </div>
+                <div class="w3-row">
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7826/2360627" target="_blank"><img src="images/index/tabs/3-1.jpg" alt=""></a><figcaption>Tesla 籌措鉅額資金 一切都是為了它！</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7823/2364442" target="_blank"><img src="images/index/tabs/3-2.jpg" alt=""></a><figcaption>賣輸Benz BMW推史上最大的攻勢</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7826/2361773" target="_blank"><img src="images/index/tabs/3-3.jpg" alt=""></a><figcaption>4代Mazda MX-5終於推出硬車頂了 但無法上路！</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7826/2361912" target="_blank"><img src="images/index/tabs/3-4.jpg" alt=""></a><figcaption>Ssangyong雙龍全新旗艦休旅車 年底上市</figcaption></figure>
+                </div>
+                <div class="w3-row">
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7831/2113261" target="_blank"><img src="images/index/tabs/4-1.jpg" alt=""></a><figcaption>奧迪嚴選中古車 南屯展示中心正式啟用</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7831/1919120" target="_blank"><img src="images/index/tabs/4-2.jpg" alt=""></a><figcaption>HOT大聯盟 獲首屆認證中古車信譽品牌金獎</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7831/1428704" target="_blank"><img src="images/index/tabs/4-3.jpg" alt=""></a><figcaption>年前換優質中古車 Audi Approved :plus嚴選中古車元月加碼優惠</figcaption></figure>
+                  <figure class="w3-col s6 m3 w3-center"><a href="https://autos.udn.com/autos/story/7831/1312477" target="_blank"><img src="images/index/tabs/4-4.jpg" alt=""></a><figcaption>Das WeltAuto. 福斯原廠認證中古車正式營運</figcaption></figure>
+                </div>
+              </div>
+            </div>
+            <!-- 第一個tabs區域 end -->
+
+            <!-- 第二個tabs區域 start -->
+            <div id="tabs2" class="tabs">
+              <ul>
+                <li>試駕精選1</li>
+                <li class="current">試駕精選2</li>
+                <li>試駕精選3</li>
+              </ul>
+              <div>
+                <div class="w3-row">
+                  <img src="https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2017/08/13/99/3933901.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=1050">
+                  <div class="date">2017-08-31 15:50</div>
+                  <h4>
+                    <a href="/autos/story/7828/2640004">增加競爭籌碼 2018年式Ford Mondeo EcoBoost 240試駕</a>
+                  </h4>
+                  <p>有別於過往市場主流的地位，近年來台灣市場四門房車的市占率逐漸遭休旅車瓜分，更早來說，中大型四門房車就早已經透露了這樣的趨勢，銷售數字逐年下滑，國產車業者在生產成本考量下也接連退守，由原先的國產轉為進口。</p>
+                </div>
+                <div>
+                  <img src="https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2017/08/21/99/3897592.jpg&amp;s=Y&amp;x=66&amp;y=78&amp;sw=1030&amp;sh=687">
+                  <div class="date">2017-08-31 15:50</div>
+                  <h4>
+                    <a href="/autos/story/7828/2654356">Audi Q2跨界有型 客製打造獨有個性</a>
+                  </h4>
+                  <p>跨界是一種車界時尚，在這個時尚舞台裡當然少不了Audi。全新上市的Audi Q2突破A系列與Q系列的界線，在外貌上自創一格，緊抓住年輕世代的口味；功能上兼具操控樂趣及數位娛樂，不失豪華車品牌該有的奢華元素。</p>
+                </div>
+                <div>
+                  <img src="https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2017/07/14/99/3756674.jpg&amp;s=Y&amp;x=212&amp;y=144&amp;sw=978&amp;sh=652">
+                  <div class="date">2017-08-31 15:50</div>
+                  <h4>
+                    <a href="/autos/story/7828/2584260">不只好看更是有料 VOLVO V90 / V90 Cross Country試駕</a>
+                  </h4>
+                  <p>近年來休旅車熱潮狂掃全球市場，台灣自然也不例外，成為成長最快速的級距，但畢竟不是人人都喜歡開底盤及重心較高的休旅車，歐洲市場相當常見的旅行車，近年在台灣市場也逐步獲得青睞，成為台灣車主新寵。</p>
+                </div>
+              </div>
+            </div>
+            <!-- 第二個tabs區域 end -->
+          </div>
         </div>
 
-        <div class="w3-third t-p1rem">
+        <div class="w3-quarter t-p1rem">
           <div class="t-p1rem w3-black w3-round">
             <!--  slick plugin start   -->
             <div class="news_slider">
@@ -108,7 +244,6 @@
       </div>
 
     </div>
-
 
     <!-- footer 區域 ================================================================ -->
     <footer class="w3-center w3-small">
