@@ -27,28 +27,46 @@
     <script>
       $(document).ready(function(){
         $('.TS_slider').slick({
-          //autoplay: true,
+          autoplay: true,
           dots: true
+        });
+        $('.news_slider').slick({
+          //autoplay: true,
+          dots: false,
+          vertical: true,
+          slidesToShow: 3,
+          slidesToScroll: 1
         });
       });
     </script>
 
-    <style>
+
+     <style>
+      #main{padding-top: 75px;}
+
+      .TS_slider.slick-dotted.slick-slider { margin-bottom: 40px; }
       .TS_slider img { width: 100%; height: auto; }
-      .slick-prev, .slick-next { z-index: 9; }
-      .slick-prev { left: 10px; }
-      .slick-next { right: 10px; }
+      .TS_slider .slick-prev, .TS_slider .slick-next { z-index: 9; }
+      .TS_slider .slick-prev { left: 10px; }
+      .TS_slider .slick-next { right: 10px; }
 
-      .slick-dots li { width: auto; height: auto; }
-      .slick-dots li button { width: 40px; height: 4px; background-color: rgba(153, 153, 153, 0.7); rad; padding: 0; }
-      .slick-dots li.slick-active button { background-color: darkred; }
-      .slick-dots li button:before,
-      .slick-dots li button:after { width: 100%; height: 10px; position: absolute; left: 0; content: ''; }
-      .slick-dots li button:before { top: -10px; }
-      .slick-dots li button:after { bottom: -10px; }
+      .TS_slider .slick-dots li { width: auto; height: auto; }
+      .TS_slider .slick-dots li button { width: 40px; height: 4px; background-color: rgba(153, 153, 153, 0.7); rad; padding: 0; }
+      .TS_slider .slick-dots li.slick-active button { background-color: red; }
 
-
+      .TS_slider .slick-dots li button:before,
+      .TS_slider .slick-dots li button:after { width: 100%; height: 10px; position: absolute; left: 0; content: ''; }
+      .TS_slider .slick-dots li button:before { top: -10px; }
+      .TS_slider .slick-dots li button:after { bottom: -10px; }
+      
+      .news_slider img { width: 100%; height: auto; }
+      .news_slider span { position: absolute; left: 0; top: 0; text-align: center;
+        background-image: url(images/numBG.png); width: 25px; height: 25px; }
+      .news_slider .slick-track div { position: relative; }
+      
     </style>
+
+
 
   </head>
   <body>
@@ -69,7 +87,28 @@
       </div>
       <!--  slick plugin end   -->
 
+      <div class="container">
+        <div class="w3-twothird t-p1rem">
+          <div class="t-p1rem w3-white w3-round">twothird</div>
+        </div>
+
+        <div class="w3-third t-p1rem">
+          <div class="t-p1rem w3-black w3-round">
+            <!--  slick plugin start   -->
+            <div class="news_slider">
+              <div><img src="images/carousel/car1.jpg" alt=""><span>1</span><p>23萬美元落槌 福特《Ford Apollo Edition Mustang》順利售出 23萬美元落槌</p></div>
+              <div><img src="images/carousel/car2.jpg" alt=""><span>2</span><p>23萬美元落槌 福特《Ford Apollo Edition Mustang》順利售出 23萬美元落槌</p></div>
+              <div><img src="images/carousel/car3.jpg" alt=""><span>3</span><p>23萬美元落槌 福特《Ford Apollo Edition Mustang》順利售出 23萬美元落槌</p></div>
+              <div><img src="images/carousel/car4.jpg" alt=""><span>4</span><p>23萬美元落槌 福特《Ford Apollo Edition Mustang》順利售出 23萬美元落槌</p></div>
+              <div><img src="images/carousel/car5.jpg" alt=""><span>5</span><p>23萬美元落槌 福特《Ford Apollo Edition Mustang》順利售出 23萬美元落槌</p></div>
+            </div>
+            <!--  slick plugin end   -->
+          </div>
+        </div>
+      </div>
+
     </div>
+
 
     <!-- footer 區域 ================================================================ -->
     <footer class="w3-center w3-small">
