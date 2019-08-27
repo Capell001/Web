@@ -18,19 +18,46 @@
 
     <!-- 以下自行設計的 -->
     <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/index.css">
     <script src="js/loadFile.js"></script>
+    
+    <style>
+      #main .w3-threequarter  iframe { display: block; width: 100%; max-width: 800px; height: 400px; margin: 0 auto; }
+
+      aside>div { display: block; max-width: 200px; margin: 0 auto; padding: 0 50px; }
+      aside img { width: 100%; height: auto; margin-bottom: 10px; }
+      aside img.current { border: 4px solid red; }
+    </style>
+
+
   </head>
   <body>
 
-    <!-- header 區域 ================================================================ -->
-    <header class="w3-top">
-      <!-- load header.html -->
-    </header>
+     <div id="main">
 
-    <!-- #main 中央內容區域 =============================================================== -->
-    <div id="main">
-      <h1>影片介紹</h1>
+      <div class="container">
+
+        <div class="w3-threequarter">
+          <div class="w3-black w3-padding-large w3-padding-24 w3-round" style="min-height: 100%;">
+
+            <iframe name="movieFrame" width="560" height="315" src="https://www.youtube.com/embed/hOskFsCGLgA?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+          </div>
+        </div>
+
+        <aside class="w3-quarter">
+          <div class="w3-black w3-padding-large w3-padding-24 w3-round" style="min-height: 100%;">
+
+            <a href="https://www.youtube.com/embed/Z-BFIdQrcik?rel=0&amp;showinfo=0&amp;autoplay=1" target="movieFrame"><img src="images/movie/movie01.jpg" alt=""></a>
+            <a href="https://www.youtube.com/embed/1LphOJC2TOs?rel=0&amp;showinfo=0&amp;autoplay=1" target="movieFrame"><img src="images/movie/movie02.jpg" alt=""></a>
+            <a href="https://www.youtube.com/embed/hOskFsCGLgA?rel=0&amp;showinfo=0&amp;autoplay=1" target="movieFrame"><img src="images/movie/movie03.jpg" alt="" class="current"></a>
+            <a href="https://www.youtube.com/embed/ugNA5w0htMA?rel=0&amp;showinfo=0&amp;autoplay=1" target="movieFrame"><img src="images/movie/movie04.jpg" alt=""></a>
+            <a href="https://www.youtube.com/embed/CGMszAOVLvc?rel=0&amp;showinfo=0&amp;autoplay=1" target="movieFrame"><img src="images/movie/movie05.jpg" alt=""></a>
+            <a href="https://www.youtube.com/embed/SBaR0oqjWIo?rel=0&amp;showinfo=0&amp;autoplay=1" target="movieFrame"><img src="images/movie/movie06.jpg" alt=""></a>
+
+          </div>
+        </aside>
+      </div>
+
     </div>
 
     <!-- footer 區域 ================================================================ -->
