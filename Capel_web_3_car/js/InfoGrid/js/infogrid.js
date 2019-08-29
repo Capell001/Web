@@ -7,7 +7,7 @@ $(function() {
       $allDt = $("dt"),
       $allCells = $("dd");
   
-  var colS = Math.floor($('#page-wrap').width()/$('.info-col').length*2/3);
+  var colS = Math.floor($('#page-wrap').width()/$('.info-col').length*3/4);
   var colW = $('#page-wrap').width()-($('.info-col').length-1)*colS;
 
   $("#page-wrap a.image").on("click", function(e) { 
