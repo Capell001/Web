@@ -1,82 +1,61 @@
 $(function() {
 
-    // Set up variables
-    var $el, $parentWrap, $otherWrap, 
-        $allTitles = $("dt").css({
-            padding: 5, // setting the padding here prevents a weird situation, where it would start animating at 0 padding instead of 5
-            "cursor": "pointer" // make it seem clickable
-        }),
-        $allCells = $("dd").css({
-            position: "relative",
-            top: -1,
-            left: 0,
-            display: "none" // info cells are just kicked off the page with CSS (for accessibility)
-        });
-    
-    // clicking image of inactive column just opens column, doesn't go to link   
-    $("#page-wrap").delegate("a.image","click", function(e) { 
-        
-        if ( !$(this).parent().hasClass("curCol") ) {         
-            e.preventDefault(); 
-            $(this).next().find('dt:first').click(); 
-        } 
-        
-    });
-    
-    // clicking on titles does stuff
-    $("#page-wrap").delegate("dt", "click", function() {
-        
-        // cache this, as always, is good form
-        $el = $(this);
-        
-        // if this is already the active cell, don't do anything
-        if (!$el.hasClass("current")) {
-        
-            $parentWrap = $el.parent().parent();
-            $otherWraps = $(".info-col").not($parentWrap);
-            
-            // remove current cell from selection of all cells
-            $allTitles = $("dt").not(this);
-            
-            // close all info cells
-            $allCells.slideUp();
-            
-            // return all titles (except current one) to normal size
-            $allTitles.animate({
-                fontSize: "14px",
-                paddingTop: 5,
-                paddingRight: 5,
-                paddingBottom: 5,
-                paddingLeft: 5
-            });
-            
-            // animate current title to larger size            
-            $el.animate({
-                "font-size": "20px",
-                paddingTop: 10,
-                paddingRight: 5,
-                paddingBottom: 0,
-                paddingLeft: 10
-            }).next().slideDown();
-            
-            // make the current column the large size
-            $parentWrap.animate({
-                width: '30%'
-            }).addClass("curCol");
-            
-            // make other columns the small size
-            $otherWraps.animate({
-                width: '17.5%'
-            }).removeClass("curCol");
-            
-            // make sure the correct column is current
-            $allTitles.removeClass("current");
-            $el.addClass("current");  
-        
-        }
-        
-    });
-    
-    $("#starter").trigger("click");
-    
+  // 設定變數
+  // $el=>被click展開的<dt>, $parentCol=>$el的parent的parent也就是info-col, $otherCols是沒有展開的info-col
+  // $allDt預設是所有的<dt>, $allCells預設是所有的<dd>
+  var $el, $parentCol, $otherCols, 
+      $allDt = $("dt"),
+      $allCells = $("dd");
+  
+  var colS = Math.floor($('#page-wrap').width()/$('.info-col').length*2/3);
+  var colW = $('#page-wrap').width()-($('.info-col').length-1)*colS;
+
+  $("#page-wrap a.image").on("click", function(e) { 
+
+    if ( !$(this).parent().hasClass("curCol") ) {         
+      e.preventDefault(); 
+      $(this).next().find('dt:first').click(); 
+    } 
+
+  });
+
+  $("#page-wrap dt").on("click", function() {
+
+    $el = $(this);
+
+    if (!$el.hasClass("current")) {
+
+      $parentCol = $el.parent().parent();
+      $otherCols = $(".info-col").not($parentCol);
+
+      // remove current cell from selection of all cells
+      $allDt = $("dt").not(this);
+
+      // close all info cells
+      $allCells.slideUp();
+
+      // return all titles (except current one) to normal size
+      $allDt.animate({
+        fontSize: 15
+      });
+
+      // animate current title to larger size            
+      $el.animate({"font-size": "20px"}).next().css('width',colW).slideDown();
+
+      // make the current column the large size
+      $parentCol.animate({width: colW}).addClass("curCol");
+
+      // make other columns the small size
+      $otherCols.animate({width: colS}).removeClass("curCol");
+
+      // make sure the correct column is current
+      $allDt.removeClass("current");
+      $el.addClass("current");  
+
+    }
+
+  });
+
+  $("#starter").trigger("click");
+
 });
