@@ -33,12 +33,25 @@
     </style>
 
     <script>
-       window.onload = function(){
+        window.onload = function(){
+        //
         $('.itemGroup').masonry({
           itemSelector: '.item',
           columnWidth: '.item'
-        });        
+        });
+        
+        //偵測設定<ul>的寬度=========================================
+        function chkItemGroupWidth(){
+          var liWidth = $('.itemGroup li').outerWidth(true);
+          var targetWidth = Math.floor( $(window).width()/liWidth ) * liWidth;
+          $('.itemGroup').css('width',targetWidth);
+        }
+        chkItemGroupWidth();
+        $(window).resize(function(){
+          chkItemGroupWidth();
+        });
       }
+
     </script>
   </head>
   <body>
