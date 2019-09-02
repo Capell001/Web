@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    input[type=text],input[type=file],textarea{display: block; width: 100%; margin-bottom: 10px}
+    input[type=file] {display: none}
+    .selectFile{ background-color: darkblue; color: #fff; }
+    ::placeholder { color: #000; }
+  </style>
+
+</head>
+<body>
+   <form name="form1" method="post" enctype="multipart/form-data" action="test002.html">
+<!--    <input type="text" name="TSname" placeholder="請輸入姓名" required value="TSuiling" readonly disabled>-->
+    <input type="text" name="TSname" placeholder="請輸入姓名" required value="" max="10" maxlength="10" oninvalid="setCustomValidity('不能是空欄位')">
+    <input type="text" name="TSname" placeholder="請輸入主旨" required  oninvalid="setCustomValidity('不能是空欄位')">
+    
+     <label class="selectFile"><input type="file" name="TSuploadFile" placeholder="請選擇.......">選擇圖檔</label>
+    <br>
+    
+     <input type="url">
+    <br>
+    
+    <select name="TS">
+      <option value="0">請選擇....</option>
+      <option value="1">AAAA</option>
+      <option value="2">BBBB</option>
+      <option value="3">CCCC</option>
+    </select>
+    <br>
+
+    
+     <label><input type="radio" name="TSsex" value="1">男</label>
+    <label><input type="radio" name="TSsex" value="2">女</label>
+    
+    <br>
+    
+    <label><input type="checkbox" name="chkb1" value="1">甲</label>
+    <label><input type="checkbox" name="chkb2" value="2">乙</label>
+    <label><input type="checkbox" name="chkb3" value="3">丙</label>
+    <label><input type="checkbox" name="chkb4" value="4">丁</label>
+    
+     <textarea name="TScontent" placeholder="請輸入內容......" required rows="5"></textarea>
+
+    <input type="submit" value="送出">
+  </form>
+
+</body>
+</html>
